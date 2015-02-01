@@ -1,0 +1,31 @@
+{
+  "name": "stoke",
+  "version": "0.0.0",
+  "description": "",
+  "author": "Lim Yuan Qing",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/yuanqing/stoke.git"
+  },
+  "devDependencies": {
+    "istanbul": "^0.3.5",
+    "jshint": "^2.6.0",
+    "lodash.foreach": "^2.4.1",
+    "tape": "^3.4.0"
+  },
+  "scripts": {
+    "lint": "jshint --verbose index.js test/*.js",
+    "test": "rm -rf coverage && istanbul cover tape test/*.js",
+    "build": "npm run lint && npm test"
+  },
+  "keywords": [
+    "arguments",
+    "cli",
+    "bash",
+    "parser",
+    "shell",
+    "split",
+    "tokenize"
+  ]
+}
