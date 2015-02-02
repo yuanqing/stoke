@@ -12,7 +12,7 @@ test('no nested quotes', function(t) {
         '\'\'', [
           {
             type: 'single-quoted',
-            body: []
+            body: ''
           }
         ]
       ],
@@ -20,7 +20,7 @@ test('no nested quotes', function(t) {
         '\' \'', [
           {
             type: 'single-quoted',
-            body: [{ type: 'unquoted', body: ' ' }]
+            body: ' '
           }
         ]
       ],
@@ -28,7 +28,7 @@ test('no nested quotes', function(t) {
         '\'  \'', [
           {
             type: 'single-quoted',
-            body: [{ type: 'unquoted', body: '  ' }]
+            body: '  '
           }
         ]
       ],
@@ -36,7 +36,7 @@ test('no nested quotes', function(t) {
         '\'foo\'', [
           {
             type: 'single-quoted',
-            body: [{ type: 'unquoted', body: 'foo' }]
+            body: 'foo'
           }
         ]
       ],
@@ -44,7 +44,7 @@ test('no nested quotes', function(t) {
         ' \'foo\' ', [
           {
             type: 'single-quoted',
-            body: [{ type: 'unquoted', body: 'foo' }]
+            body: 'foo'
           }
         ]
       ],
@@ -52,7 +52,7 @@ test('no nested quotes', function(t) {
         '\' foo \'', [
           {
             type: 'single-quoted',
-            body: [{ type: 'unquoted', body: ' foo ' }]
+            body: ' foo '
           }
         ]
       ],
@@ -60,7 +60,7 @@ test('no nested quotes', function(t) {
         ' \' foo \' ', [
           {
             type: 'single-quoted',
-            body: [{ type: 'unquoted', body: ' foo ' }]
+            body: ' foo '
           }
         ]
       ]
@@ -78,11 +78,11 @@ test('no nested quotes', function(t) {
         '\'foo\'\'bar\'', [
           {
             type: 'single-quoted',
-            body: [{ type: 'unquoted', body: 'foo' }]
+            body: 'foo'
           },
           {
             type: 'single-quoted',
-            body: [{ type: 'unquoted', body: 'bar' }]
+            body: 'bar'
           }
         ]
       ],
@@ -90,11 +90,11 @@ test('no nested quotes', function(t) {
         ' \' foo \' \' bar \' ', [
           {
             type: 'single-quoted',
-            body: [{ type: 'unquoted', body: ' foo ' }]
+            body: ' foo '
           },
           {
             type: 'single-quoted',
-            body: [{ type: 'unquoted', body: ' bar ' }]
+            body: ' bar '
           }
         ]
       ]
@@ -116,7 +116,7 @@ test('nested double-quotes', function(t) {
         '\'""\'', [
           {
             type: 'single-quoted',
-            body: [{ type: 'unquoted', body: '""' }]
+            body: '""'
           }
         ]
       ],
@@ -124,7 +124,7 @@ test('nested double-quotes', function(t) {
         '\'" "\'', [
           {
             type: 'single-quoted',
-            body: [{ type: 'unquoted', body: '" "' }]
+            body: '" "'
           }
         ]
       ],
@@ -132,7 +132,7 @@ test('nested double-quotes', function(t) {
         '\'"foo"\'', [
           {
             type: 'single-quoted',
-            body: [{ type: 'unquoted', body: '"foo"' }]
+            body: '"foo"'
           }
         ]
       ],
@@ -140,7 +140,7 @@ test('nested double-quotes', function(t) {
         '\'"foo bar"\'', [
           {
             type: 'single-quoted',
-            body: [{ type: 'unquoted', body: '"foo bar"' }]
+            body: '"foo bar"'
           }
         ]
       ]
@@ -169,7 +169,7 @@ test('nested double-quotes', function(t) {
         '\'"\'', [
           {
             type: 'single-quoted',
-            body: [{ type: 'unquoted', body: '"' }]
+            body: '"'
           }
         ]
       ],
@@ -177,7 +177,7 @@ test('nested double-quotes', function(t) {
         '\'" \'', [
           {
             type: 'single-quoted',
-            body: [{ type: 'unquoted', body: '" ' }]
+            body: '" '
           }
         ]
       ],
@@ -185,7 +185,7 @@ test('nested double-quotes', function(t) {
         '\'"foo\'', [
           {
             type: 'single-quoted',
-            body: [{ type: 'unquoted', body: '"foo' }]
+            body: '"foo'
           }
         ]
       ],
@@ -193,7 +193,7 @@ test('nested double-quotes', function(t) {
         '\'foo bar"\'', [
           {
             type: 'single-quoted',
-            body: [{ type: 'unquoted', body: 'foo bar"' }]
+            body: 'foo bar"'
           }
         ]
       ]
@@ -215,7 +215,7 @@ test('nested back-quotes', function(t) {
         '\'``\'', [
           {
             type: 'single-quoted',
-            body: [{ type: 'unquoted', body: '``' }]
+            body: '``'
           }
         ]
       ],
@@ -223,7 +223,7 @@ test('nested back-quotes', function(t) {
         '\'` `\'', [
           {
             type: 'single-quoted',
-            body: [{ type: 'unquoted', body: '` `' }]
+            body: '` `'
           }
         ]
       ],
@@ -231,7 +231,7 @@ test('nested back-quotes', function(t) {
         '\'`foo`\'', [
           {
             type: 'single-quoted',
-            body: [{ type: 'unquoted', body: '`foo`' }]
+            body: '`foo`'
           }
         ]
       ],
@@ -239,7 +239,7 @@ test('nested back-quotes', function(t) {
         '\'`foo bar`\'', [
           {
             type: 'single-quoted',
-            body: [{ type: 'unquoted', body: '`foo bar`' }]
+            body: '`foo bar`'
           }
         ]
       ]
@@ -268,7 +268,7 @@ test('nested back-quotes', function(t) {
         '\'`\'', [
           {
             type: 'single-quoted',
-            body: [{ type: 'unquoted', body: '`' }]
+            body: '`'
           }
         ]
       ],
@@ -276,7 +276,7 @@ test('nested back-quotes', function(t) {
         '\'` \'', [
           {
             type: 'single-quoted',
-            body: [{ type: 'unquoted', body: '` ' }]
+            body: '` '
           }
         ]
       ],
@@ -284,7 +284,7 @@ test('nested back-quotes', function(t) {
         '\'`foo\'', [
           {
             type: 'single-quoted',
-            body: [{ type: 'unquoted', body: '`foo' }]
+            body: '`foo'
           }
         ]
       ],
@@ -292,7 +292,7 @@ test('nested back-quotes', function(t) {
         '\'foo bar`\'', [
           {
             type: 'single-quoted',
-            body: [{ type: 'unquoted', body: 'foo bar`' }]
+            body: 'foo bar`'
           }
         ]
       ]

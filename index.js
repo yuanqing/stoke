@@ -42,18 +42,18 @@ var stoke = function(str) {
   };
 
   parse[SINGLE_QUOTE] = function(parent) {
-    var body = [];
+    var token = [];
     while (i < len) {
       var c = str[i++];
       if (c === SINGLE_QUOTE) {
         inQuotes = false;
         break;
       }
-      parseUnquoted(body, [SINGLE_QUOTE]);
+      token.push(c);
     }
     parent.push({
       type: 'single-quoted',
-      body: body
+      body: token.join('')
     });
   };
 
@@ -89,11 +89,11 @@ var stoke = function(str) {
     i--;
     var token = []; // for accumulating characters
     while (i < len) {
-      var c = str[i++];
+      var c = str[i];
       if (terminators.indexOf(c) !== -1) {
-        i--;
         break;
       }
+      i++;
       token.push(c);
     }
     parent.push({

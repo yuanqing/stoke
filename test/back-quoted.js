@@ -159,7 +159,7 @@ test('nested single-quotes', function(t) {
             body: [
               {
                 type: 'single-quoted',
-                body: []
+                body: ''
               }
             ]
           }
@@ -172,12 +172,7 @@ test('nested single-quotes', function(t) {
             body: [
               {
                 type: 'single-quoted',
-                body: [
-                  {
-                    type: 'unquoted',
-                    body: ' '
-                  }
-                ]
+                body: ' '
               }
             ]
           }
@@ -190,12 +185,7 @@ test('nested single-quotes', function(t) {
             body: [
               {
                 type: 'single-quoted',
-                body: [
-                  {
-                    type: 'unquoted',
-                    body: 'foo'
-                  }
-                ]
+                body: 'foo'
               }
             ]
           }
@@ -208,12 +198,7 @@ test('nested single-quotes', function(t) {
             body: [
               {
                 type: 'single-quoted',
-                body: [
-                  {
-                    type: 'unquoted',
-                    body: 'foo bar'
-                  }
-                ]
+                body: 'foo bar'
               }
             ]
           }
