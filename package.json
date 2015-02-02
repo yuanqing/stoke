@@ -1,7 +1,7 @@
 {
   "name": "stoke",
   "version": "0.0.0",
-  "description": "",
+  "description": "Generate the Abstract Syntax Tree of a Bash command.",
   "author": "Lim Yuan Qing",
   "license": "MIT",
   "repository": {
@@ -11,7 +11,6 @@
   "devDependencies": {
     "istanbul": "^0.3.5",
     "jshint": "^2.6.0",
-    "lodash.foreach": "^2.4.1",
     "tape": "^3.4.0"
   },
   "scripts": {
@@ -21,11 +20,13 @@
   },
   "keywords": [
     "arguments",
+    "ast",
     "cli",
     "bash",
     "parser",
     "shell",
     "split",
+    "syntax",
     "tokenize"
   ]
 }
