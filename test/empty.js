@@ -3,7 +3,7 @@
 var test = require('tape');
 var stoke = require('../');
 
-test('no tokens', function(t) {
+test('empty', function(t) {
   [ '', ' ', '  ' ].forEach(function(v) {
     t.looseEqual(stoke(v), []);
   });

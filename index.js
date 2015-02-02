@@ -8,7 +8,7 @@ var SPACE = ' ';
 var stoke = function(str) {
 
   if (typeof str !== 'string') {
-    throw new Error('need a string');
+    throw new Error('expects a string');
   }
 
   var len = str.length;
@@ -32,7 +32,6 @@ var stoke = function(str) {
         parse[BACK_QUOTE](body);
         break;
       default:
-        i--;
         parseUnquoted(body, [DOUBLE_QUOTE, BACK_QUOTE]);
       }
     }
@@ -45,9 +44,8 @@ var stoke = function(str) {
   parse[SINGLE_QUOTE] = function(parent) {
     var body = [];
     while (i < len) {
-      var c = str[i];
+      var c = str[i++];
       if (c === SINGLE_QUOTE) {
-        i++; // skip over the closing '
         inQuotes = false;
         break;
       }
@@ -61,24 +59,23 @@ var stoke = function(str) {
 
   parse[BACK_QUOTE] = function(parent) {
     var body = [];
-    while (i < len) {
-      var c = str[i];
+    var stop = false;
+    while (!stop && i < len) {
+      var c = str[i++];
       switch (c) {
-      case BACK_QUOTE:
-      case SPACE:
-      case DOUBLE_QUOTE:
       case SINGLE_QUOTE:
-        i++;
-      }
-      if (c === BACK_QUOTE) {
-        inQuotes = false;
-        break;
-      }
-      if (c === DOUBLE_QUOTE) {
-        parse[DOUBLE_QUOTE](body);
-      } else if (c === SINGLE_QUOTE) {
         parse[SINGLE_QUOTE](body);
-      } else {
+        break;
+      case DOUBLE_QUOTE:
+        parse[DOUBLE_QUOTE](body);
+        break;
+      case BACK_QUOTE:
+        inQuotes = false;
+        stop = true;
+        break;
+      case SPACE:
+        break;
+      default:
         parseUnquoted(body, [SPACE, SINGLE_QUOTE, DOUBLE_QUOTE, BACK_QUOTE]);
       }
     }
@@ -89,32 +86,34 @@ var stoke = function(str) {
   };
 
   var parseUnquoted = function(parent, terminators) {
+    i--;
     var token = []; // for accumulating characters
     while (i < len) {
-      var c = str[i];
+      var c = str[i++];
       if (terminators.indexOf(c) !== -1) {
+        i--;
         break;
       }
-      i++;
       token.push(c);
     }
-    if (token.length) {
-      parent.push({
-        type: 'unquoted',
-        body: token.join('')
-      });
-    }
+    parent.push({
+      type: 'unquoted',
+      body: token.join('')
+    });
   };
 
   while (i < len) {
-    var c = str[i];
-    if (c === SPACE) {
-      i++; // skip over the space
-    } else if (c in parse) {
-      i++; // skip over the opening " ' or `
+    var c = str[i++];
+    switch (c) {
+    case SINGLE_QUOTE:
+    case DOUBLE_QUOTE:
+    case BACK_QUOTE:
       inQuotes = true;
       parse[c](result);
-    } else {
+      break;
+    case SPACE:
+      break;
+    default:
       parseUnquoted(result, [SPACE, SINGLE_QUOTE, DOUBLE_QUOTE, BACK_QUOTE]);
     }
   }
