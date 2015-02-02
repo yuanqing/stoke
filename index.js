@@ -1,9 +1,9 @@
 'use strict';
 
+var SPACE = ' ';
 var BACK = '`';
 var SINGLE = '\'';
 var DOUBLE = '"';
-var SPACE = ' ';
 
 var stoke = function(str) {
 
@@ -20,7 +20,7 @@ var stoke = function(str) {
 
   var parse = {};
 
-  parse[DOUBLE] = function() {
+  parse[DOUBLE] = function(inBackQuote) {
     while (i < len) {
       var c = str[i++];
       token.push(c);
@@ -29,6 +29,9 @@ var stoke = function(str) {
         inQuotes = false;
         return;
       case BACK:
+        if (inBackQuote) {
+          throw new Error('malformed: ' + (i - 1));
+        }
         parse[BACK]();
       }
     }
@@ -49,7 +52,11 @@ var stoke = function(str) {
     while (i < len) {
       var c = str[i++];
       token.push(c);
-      if (c === BACK) {
+      switch (c) {
+      case DOUBLE:
+        parse[DOUBLE](true); // cannot have eg. `"`foo`"`
+        break;
+      case BACK:
         inQuotes = false;
         return;
       }
@@ -80,15 +87,13 @@ var stoke = function(str) {
       parseBare();
     }
     if (inQuotes) {
-      throw new Error('malformed');
+      throw new Error('malformed: ' + (i-1));
     }
-    if (token.length) {
-      token = token.join('').trim();
-      if (token) {
-        result.push(token);
-      }
-      token = [];
+    token = token.join('').trim();
+    if (token) {
+      result.push(token);
     }
+    token = [];
   }
 
   return result;
