@@ -78,7 +78,7 @@ $ npm i --save stoke
 
 ## Changelog
 
-- 0.0.1
+- 0.1.0
   - Initial release
 
 ## License
