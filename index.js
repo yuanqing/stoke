@@ -5,6 +5,8 @@ var SINGLE_QUOTE = '\'';
 var DOUBLE_QUOTE = '"';
 var SPACE = ' ';
 
+var OPERATORS_REGEX = /([<>;\|])/;
+
 var stoke = function(str) {
 
   if (typeof str !== 'string') {
@@ -96,10 +98,15 @@ var stoke = function(str) {
       i++;
       token.push(c);
     }
-    parent.push({
-      type: 'unquoted',
-      body: token.join('')
-    });
+    token.join('')
+      .split(OPERATORS_REGEX)
+      .filter(Boolean)
+      .forEach(function(token) {
+        parent.push({
+          type: 'unquoted',
+          body: token
+        });
+      });
   };
 
   while (i < len) {
