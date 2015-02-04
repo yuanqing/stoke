@@ -1,4 +1,4 @@
-# Stoke.js [![npm Version](http://img.shields.io/npm/v/stoke.svg?style=flat)](https://www.npmjs.org/package/stoke) [![Build Status](https://img.shields.io/travis/yuanqing/stoke.svg?branch=master&style=flat)](https://travis-ci.org/yuanqing/stoke) [![Coverage Status](https://img.shields.io/coveralls/yuanqing/stoke.svg?style=flat)](https://coveralls.io/r/yuanqing/stoke)
+# Stoke.js [![npm Version](http://img.shields.io/npm/v/stoke.svg?style=flat)](https://www.npmjs.org/package/stoke) [![Build Status](https://img.shields.io/travis/yuanqing/stoke.svg?branch=master&style=flat)](https://travis-ci.org/yuanqing/stoke) [![Coverage Status](https://img.shields.io/coveralls/yuanqing/stoke.svg?style=flat)](https://coveralls.io/r/yuanqing/stoke) [![Stability Experimental](http://img.shields.io/badge/stability-experimental-red.svg)]
 
 > Generate the Abstract Syntax Tree of a [Bash](http://www.gnu.org/software/bash/) command.
 
@@ -48,9 +48,9 @@ stoke('echo "foo `echo \'bar baz\'`"');
 
 There are [lots of tests](https://github.com/yuanqing/stoke/blob/master/test).
 
-Currently, Stoke does *not* support escaped quotes.
-
 ### Grammar
+
+Currently, only a *subset* of the grammar is supported. (For example, Stoke does *not* support escaped quotes.)
 
 The [EBNF](http://en.wikipedia.org/wiki/Extended_Backus-Naur_Form) grammar rules that define a token are as follows:
 
