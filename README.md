@@ -50,9 +50,7 @@ There are [lots of tests](https://github.com/yuanqing/stoke/blob/master/test).
 
 ### Grammar
 
-Currently, only a *subset* of the grammar is supported. (For example, Stoke does *not* support escaped quotes.)
-
-The [EBNF](http://en.wikipedia.org/wiki/Extended_Backus-Naur_Form) grammar rules that define a token are as follows:
+Stoke supports a *subset* of the grammar that defines a token. The [EBNF](http://en.wikipedia.org/wiki/Extended_Backus-Naur_Form) rules are as follows:
 
 ```
 token         = unquoted | single­-quoted | double­-quoted | back-quoted ;
