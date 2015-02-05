@@ -13,7 +13,7 @@ var stoke = function(str) {
 
   var len = str.length;
   var i = 0;
-  var inQuotes = false;
+  var quoteDepth = 0;
   var result = [];
 
   var parse = {};
@@ -25,10 +25,11 @@ var stoke = function(str) {
       var c = str[i++];
       switch (c) {
       case DOUBLE_QUOTE:
-        inQuotes = false;
+        quoteDepth--;
         stop = true;
         break;
       case BACK_QUOTE:
+        quoteDepth++;
         parse[BACK_QUOTE](body);
         break;
       default:
@@ -46,7 +47,7 @@ var stoke = function(str) {
     while (i < len) {
       var c = str[i++];
       if (c === SINGLE_QUOTE) {
-        inQuotes = false;
+        quoteDepth--;
         break;
       }
       token.push(c);
@@ -63,15 +64,14 @@ var stoke = function(str) {
     while (!stop && i < len) {
       var c = str[i++];
       switch (c) {
-      case SINGLE_QUOTE:
-        parse[SINGLE_QUOTE](body);
-        break;
-      case DOUBLE_QUOTE:
-        parse[DOUBLE_QUOTE](body);
-        break;
       case BACK_QUOTE:
-        inQuotes = false;
+        quoteDepth--;
         stop = true;
+        break;
+      case SINGLE_QUOTE:
+      case DOUBLE_QUOTE:
+        quoteDepth++;
+        parse[c](body);
         break;
       case SPACE:
         break;
@@ -108,7 +108,7 @@ var stoke = function(str) {
     case SINGLE_QUOTE:
     case DOUBLE_QUOTE:
     case BACK_QUOTE:
-      inQuotes = true;
+      quoteDepth++;
       parse[c](result);
       break;
     case SPACE:
@@ -118,7 +118,7 @@ var stoke = function(str) {
     }
   }
 
-  if (inQuotes) {
+  if (quoteDepth !== 0) {
     throw new Error('malformed: ' + (i-1));
   }
 
