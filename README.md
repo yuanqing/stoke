@@ -11,7 +11,7 @@
 This was written mainly:
 
 1. As an exercise in writing a parser based on strict grammar rules
-2. As part of a project to build a tiny shell from the ground up
+2. As part of a larger project to build a Bash shell from the ground up
 
 ## Usage
 
@@ -62,7 +62,7 @@ double-­quoted = &ldquo;"&rdquo; , { unquoted | back-quoted } , &ldquo;"&rdquo;
 back-quoted   = &ldquo;`&rdquo; , { unquoted | single­-quoted | double­-quoted } , &ldquo;`&rdquo; ;
 </pre>
 
-(Currently, Stoke does *not* support escape sequences. For example, you cannot escape a double-quote character when inside a double-quote block.)
+(Currently, Stoke does *not* support escape sequences. For example, you currently cannot escape a double-quote character when inside a double-quote block.)
 
 Stoke will throw an error if a given command does not conform to the above grammar rules.
 
