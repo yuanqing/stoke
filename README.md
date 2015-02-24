@@ -1,4 +1,4 @@
-# Stoke.js [![npm Version](http://img.shields.io/npm/v/stoke.svg?style=flat)](https://www.npmjs.org/package/stoke) [![Build Status](https://img.shields.io/travis/yuanqing/stoke.svg?branch=master&style=flat)](https://travis-ci.org/yuanqing/stoke) [![Coverage Status](https://img.shields.io/coveralls/yuanqing/stoke.svg?style=flat)](https://coveralls.io/r/yuanqing/stoke) ![Stability Experimental](http://img.shields.io/badge/stability-experimental-red.svg?style=flat)
+# Stoke.js [![npm Version](http://img.shields.io/npm/v/stoke.svg?style=flat)](https://npmjs.com/package/stoke) [![Build Status](https://img.shields.io/travis/yuanqing/stoke.svg?branch=master&style=flat)](https://travis-ci.org/yuanqing/stoke) [![Coverage Status](https://img.shields.io/coveralls/yuanqing/stoke.svg?style=flat)](https://coveralls.io/r/yuanqing/stoke) ![Stability Experimental](http://img.shields.io/badge/stability-experimental-red.svg?style=flat)
 
 > Generate the Abstract Syntax Tree (AST) of a [Bash](http://www.gnu.org/software/bash/) command.
 
